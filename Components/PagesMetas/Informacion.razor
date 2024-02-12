@@ -1,0 +1,25 @@
+﻿@page "/Info/{MetasId:int}"
+@inject MetasServices MetasServices
+@rendermode InteractiveServer
+
+<div class="card shadow-lg">
+    <div class="card-header">
+        <h3>Seguro que quieres elimianr esta opci&oacute;n</h3>
+    </div>
+    <div class="card-body">
+        <p class="fw-bold">Metas Id: @Metas.MetaId</p>
+        <p class="fw-bold">Descripci&oacute;n: @Metas.Descripcion</p>
+        <p class="fw-bold">Monto: @Metas.Monto</p>
+        <p class="fw-bold">Fecha: @Metas.Fecha</p>
+    </div>
+    <div class="card-footer">
+        <a type="button" href="Create" class="btn btn-primary">Atr&aacute;s</a>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public int MetasId { get; set; }
+    public Metas Metas { get; set; } = new Metas();
+
+    protected override async Task OnInitializedAsync() => Metas = await MetasServices.Buscar(MetasId);
+}
