@@ -14,4 +14,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\Dal\" />
+    <Folder Include="Components\Data\" />
+    <Folder Include="Components\Services\" />
+  </ItemGroup>
+
 </Project>
