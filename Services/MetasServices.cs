@@ -16,19 +16,11 @@ namespace Parcial1_Ap1_BraylinVasquez.Services
 
         public async Task<bool> Guardar(Metas metas)
         {
-            int guardo;
             if (metas.MetaId == 0)
-            {
                 await _contexto.Metas.AddAsync(metas);
-                guardo = 1;
-            }
             else
-            {
                 _contexto.Metas.Update(metas);
-                guardo = await _contexto.SaveChangesAsync();
-                _contexto.Metas.Entry(metas).State = EntityState.Detached;
-            }
-            return guardo > 0;
+            return await _contexto.SaveChangesAsync()>0;
         }
         public async Task<bool> Eliminar(int metasId)
         {
