@@ -1,0 +1,75 @@
+﻿@page "/Create"
+@rendermode InteractiveServer
+@inject MetasServices MetasServices
+
+<EditForm Model="Metas" OnValidSubmit="Guardar">
+    <DataAnnotationsValidator/>
+    <div class="card card shadow-lg">
+        <div class="card-header fw-bold ">
+            <h3 >Registro Metas</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label class="fw-bold">Metas id</label>
+                    <InputNumber @bind-Value="Metas.MetaId" class="form-control" />
+                </div>
+                <div class="col-6 ">
+                    <label class="fw-bold">Fecha</label>
+                    <InputDate @bind-Value="Metas.Fecha" class="form-control" />
+                    <ValidationMessage For="@(()=>Metas.Fecha)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 ">
+                    <label class="fw-bold">Descripci&oacute;n</label>
+                    <InputText @bind-Value="Metas.Descripcion" class="form-control" />
+                    <ValidationMessage For="@(()=>Metas.Descripcion)" />
+                </div>
+                <div class="col-6 ">
+                    <label class="fw-bold">Monto</label>
+                    <InputNumber @bind-Value="Metas.Monto" class="form-control" />
+                    <ValidationMessage For="@(()=>Metas.Monto)" />
+                </div>
+            </div>
+            @if(Mensaje!= null)
+            {
+                <p class="text-danger">@Mensaje</p>
+            }
+        </div>
+        <div class="card-footer">
+            <div class="col-1 d-flex justify-content-center">
+                <div class="btn-group ">
+                    <a type="button" href="Create" class="btn btn-primary">Atr&aacute;s</a>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</EditForm>
+
+
+@code {
+    public Metas Metas { get; set; } = new Metas();
+    public string Mensaje = string.Empty;
+
+    public async Task Guardar()
+    {
+        var guardo = await MetasServices.Guardar(Metas);
+        if (guardo)
+        {
+            Mensaje = "Guardado correctamente";
+            Nuevo();
+        }
+        else
+        {
+            Mensaje = "No se ha guardado correctamente";
+        }
+    }
+
+    public void Nuevo()
+    {
+        Metas = new Metas();
+    }
+}
