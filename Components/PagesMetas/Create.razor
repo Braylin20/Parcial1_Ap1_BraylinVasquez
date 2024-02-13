@@ -49,7 +49,10 @@
 @code {
     public Metas Metas { get; set; } = new Metas();
     public string Mensaje = string.Empty;
-
+    protected override async Task OnInitializedAsync()
+    {
+        Metas.Fecha = DateTime.Now;
+    }
     public async Task Guardar()
     {
         var guardo = await MetasServices.Guardar(Metas);
