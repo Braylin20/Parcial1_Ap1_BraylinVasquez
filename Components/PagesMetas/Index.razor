@@ -11,7 +11,7 @@
     <div class="card-body">
 
         <div class="d-flex justify-content-end align-items-end mb-3">
-            <a href="Create" class="btn btn-success">Guardar</a>
+            <a href="Create" class="btn btn-success bi bi-plus-lg">Crear</a>
         </div>
        <table class="table table-bordered">
            <thead>
@@ -32,9 +32,9 @@
                         <td>@metas.Fecha</td>
                         <td>@metas.Monto</td>
                         <td>
-                            <a href="Delete/@metas.MetaId"class="btn btn-danger">Delete</a>
-                            <a href="Edit/@metas.MetaId" class="btn btn-primary">Editar</a>
-                            <a href="Info/@metas.MetaId" class="btn btn-warning">Informaci&oacute;n</a>
+                            <a href="Delete/@metas.MetaId" class="btn btn-danger bi bi-trash-fill"></a>
+                            <a href="Edit/@metas.MetaId" class="btn btn-primary bi-box-arrow-up-right"></a>
+                            <a href="Info/@metas.MetaId" class="btn btn-warning bi bi-info-square"></a>
                         </td>
                     </tr>
                 }
