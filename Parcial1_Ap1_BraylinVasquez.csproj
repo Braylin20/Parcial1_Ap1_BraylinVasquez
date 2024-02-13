@@ -15,9 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Dal\" />
-    <Folder Include="Components\Data\" />
-    <Folder Include="Components\Services\" />
+    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>
